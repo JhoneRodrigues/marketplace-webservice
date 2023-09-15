@@ -3,7 +3,9 @@
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/JhoneRodrigues/workshop-springboot-mongodb/blob/main/LICENSE) 
 ### Sobre o projeto
 
-Este desafio prático utilizei minhas habilidades em Java, Spring Boot, padrões REST e JPA / Hibernate. O projeto envolve a criação de uma API altamente funcional, que se integra e interage com o banco de dados H2. Essa API oferece uma gama completa de funcionalidades, desde requisições de visualização, atualização, inserção e exclusão de dados.
+Este desafio prático utilizei minhas habilidades em Java, Spring Boot, padrões REST e JPA / Hibernate para gerar uma aplicação Backend baseada na web que emula um sistema de e-commerce completo, repleto de clientes, produtos e pedidos.
+
+Esta aplicação opera por meio de uma série de requisições web que têm a finalidade de adicionar clientes, criar pedidos e gerenciar produtos. Logo abaixo, irei apresentar alguns exemplos em execução.
 
 ## Exemplo de requisições aceitas no Postman
 ### Vizualizar todos usúarios
@@ -14,6 +16,67 @@ Este desafio prático utilizei minhas habilidades em Java, Spring Boot, padrões
 
 ### Vizualizar todas categorias
 > ![image](https://user-images.githubusercontent.com/110574688/263355510-372bd98f-8978-4852-b4c3-6294d31b4d1c.png)
+
+## Pedidos em Json
+
+### Conforme o modelo conceitual, um pedido (Order) inclui os produtos solicitados, seus subvalores e o valor total do pedido:
+```bash
+{
+    "id": 1,
+    "moment": "2019-06-20T19:53:07Z",
+    "orderStatus": "PAID",
+    "client": {
+        "id": 1,
+        "name": "Maria Brown",
+        "email": "maria@gmail.com",
+        "phone": "11 988888888",
+        "password": "123456"
+    },
+    "items": [
+        {
+            "quantity": 2,
+            "price": 90.5,
+            "product": {
+                "id": 1,
+                "name": "The Lord of the Rings",
+                "description": "Lorem ipsum dolor sit amet, consectetur.",
+                "price": 90.5,
+                "imgUrl": "",
+                "categories": [
+                    {
+                        "id": 2,
+                        "name": "Books"
+                    }
+                ]
+            },
+            "subTotal": 181.0
+        },
+        {
+            "quantity": 1,
+            "price": 1250.0,
+            "product": {
+                "id": 3,
+                "name": "Macbook Pro",
+                "description": "Nam eleifend maximus tortor, at mollis.",
+                "price": 1250.0,
+                "imgUrl": "",
+                "categories": [
+                    {
+                        "id": 3,
+                        "name": "Computers"
+                    }
+                ]
+            },
+            "subTotal": 1250.0
+        }
+    ],
+    "payment": {
+        "id": 1,
+        "moment": "2019-06-20T22:53:07Z"
+    },
+    "total": 1431.0
+}
+```
 
 ## Tecnologias utilizadas
 - Java
