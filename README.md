@@ -1,25 +1,30 @@
 # springboot-jpa
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/JhoneRodrigues/workshop-springboot-mongodb/blob/main/LICENSE) 
-### Sobre o projeto
+# Microservice - beauty salon
+<h3 style="color:blue"> Status: Em desenvolvimento</h3>
 
-Este desafio prático utilizei minhas habilidades em Java, Spring Boot, padrões REST e JPA / Hibernate para gerar uma aplicação Backend baseada na web que emula um sistema de e-commerce completo, repleto de clientes, produtos e pedidos.
+### 1 - O que é?
+- I - Web service de cadastro de compras, contemplando o cenário de um e-commerce com seus produtos cadastrados, clientes e pedidos realizados.
+- II - Modelo conceitual do domínio.
+![Captura de tela de 2024-02-26 12-47-05](https://github.com/JhoneRodrigues/springboot-jpa/assets/110574688/f7957f21-47e3-4f68-8c7f-68aae5f99a0c)
 
-Esta aplicação opera por meio de uma série de requisições web que têm a finalidade de adicionar clientes, criar pedidos e gerenciar produtos. Logo abaixo, irei apresentar alguns exemplos em execução.
 
-## Exemplo de requisições aceitas no Postman
-### Vizualizar todos usúarios
+### 2 - Objetivo
+Após estudar o tópico de Spring e mapeamento de objetos relacionais com JPA, coloquei em prática todos os conceitos com este projeto. Gerei as classes de dominio seguindo o modelo, realizei a estruturação das camadas lógicas: Resource, service e repository, gerei o CRUD Create, Retrieve, Update e Delete e por fim fiz o tratamento de exceções.
+
+### 3 - Retorno das requisições em produção
+#### Vizualizar todos usúarios
 > ![image](https://user-images.githubusercontent.com/110574688/263355105-f1341b7c-36e6-412d-a6d8-9ae5eec4f6f8.png)
 
-### Vizualizar os produtos por Id
+#### Vizualizar os produtos por Id
 > ![image](https://user-images.githubusercontent.com/110574688/263355351-ab00a10a-5704-46cf-97a6-52e3a53a0e2a.png)
 
-### Vizualizar todas categorias
+#### Vizualizar todas categorias
 > ![image](https://user-images.githubusercontent.com/110574688/263355510-372bd98f-8978-4852-b4c3-6294d31b4d1c.png)
 
-## Pedidos em Json
+### 4 - Json das ordens de pedido, a entidade que possui relacionamento com todas
 
-### Conforme o modelo conceitual, um pedido (Order) inclui os produtos solicitados, seus subvalores e o valor total do pedido:
+#### Conforme o modelo conceitual, um pedido (Order) inclui os produtos solicitados, seus subvalores e o valor total do pedido:
 ```bash
 {
     "id": 1,
@@ -77,21 +82,16 @@ Esta aplicação opera por meio de uma série de requisições web que têm a fi
     "total": 1431.0
 }
 ```
+### 5 - Tecnologias utilizadas
+<ul>
+  <li>Java</li>
+  <li>Spring Boot</li>
+  <li>JPA / Hibernate</li>
+  <li>Maven</li>
+  <li>H2 Database</li>
+</ul>
 
-## Tecnologias utilizadas
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Postman
-- Maven
-- H2
-
-## Autor
-<p>Jhone Costa Rodrigues</p>
-<section align="left">  
-  <div> 
-    <a href = "mailto:jhonecosta30@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank" title="E-mail: jhonecosta30@gmail.com"></a>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://www.linkedin.com/in/jhone-rodrigues-79a080234/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" title="Linkedin: Jhone Costa Rodrigues"></a>
-  </div>
-</section>
+## <b> Vamos nos conectar..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
+<a href="https://www.linkedin.com/in/jhonerodrigues/" target="_blank">
+<img src="https://img.shields.io/badge/linkedin:  jhone rodrigues-%2300acee.svg?color=405DE6&style=for-the-badge&logo=linkedin&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
+</a>
