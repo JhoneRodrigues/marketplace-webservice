@@ -1,10 +1,7 @@
 # springboot-jpa
 
-# Microservice - beauty salon
-<h3 style="color:blue"> Status: Em desenvolvimento</h3>
-
 ### 1 - O que é?
-- I - Web service de cadastro de compras, contemplando o cenário de um e-commerce com seus produtos cadastrados, clientes e pedidos realizados.
+- I - Web service de cadastro de compras, contemplando o cenário de um e-commerce com seus produtos cadastrados, clientes e pedidos realizados;
 - II - Modelo conceitual do domínio.
 ![Captura de tela de 2024-02-26 12-47-05](https://github.com/JhoneRodrigues/springboot-jpa/assets/110574688/f7957f21-47e3-4f68-8c7f-68aae5f99a0c)
 
