@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jhonerodrigues.springbootjpa.entities.Product;
+import com.jhonerodrigues.springbootjpa.entities.dtos.ProductDTO;
 import com.jhonerodrigues.springbootjpa.repositories.ProductRepository;
 import com.jhonerodrigues.springbootjpa.services.exceptions.ResourceNotFoundException;
 
@@ -15,13 +15,13 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repository;
 	
-	public List<Product> findAll(){
-		return repository.findAll();
+	public List<ProductDTO> findAll(){
+		return repository.findAll().stream()
+				.map(x -> new ProductDTO(x)).toList();
 	}
 	
-	public Product findById (Long id) {
-		Product obj = repository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException(id));
-		return obj;
+	public ProductDTO findById (Long id) {
+		return new ProductDTO (repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(id)));
 	}
 }	
