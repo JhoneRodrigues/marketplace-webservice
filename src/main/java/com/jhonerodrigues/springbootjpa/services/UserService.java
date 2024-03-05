@@ -8,6 +8,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.jhonerodrigues.springbootjpa.entities.User;
+import com.jhonerodrigues.springbootjpa.entities.dtos.UserDTO;
+import com.jhonerodrigues.springbootjpa.entities.request.UserRequest;
 import com.jhonerodrigues.springbootjpa.repositories.UserRepository;
 import com.jhonerodrigues.springbootjpa.services.exceptions.DatabaseException;
 import com.jhonerodrigues.springbootjpa.services.exceptions.ResourceNotFoundException;
@@ -20,18 +22,18 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-	public List<User> findAll(){
-		return repository.findAll();
+	public List<UserDTO> findAll(){
+		return repository.findAll().stream()
+				.map(x -> new UserDTO(x)).toList();
 	}
 	
-	public User findById (Long id) {
-		User obj = repository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException(id));
-		return obj;
+	public UserDTO findById (Long id) {
+		return new UserDTO (repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(id)));
 	}
 	
-	public User insert (User obj) {
-		return repository.save(obj);
+	public UserDTO insert (UserRequest obj) {
+		return new UserDTO (repository.save(new User(obj)));
 	}
 	
 	public void delete (Long id) {
@@ -44,19 +46,19 @@ public class UserService {
 		}
 	}
 	
-	public User update(Long id, User obj) {
+	public UserDTO update(Long id, UserRequest obj) {
 		try {
 			User entity = repository.getReferenceById(id);
 			updateData(entity, obj);
-			return repository.save(entity);
+			return new UserDTO (repository.save(entity));
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(id);
 		}
 	}
  
-	private void updateData(User entity, User obj) {
-		entity.setName(obj.getName());
-		entity.setEmail(obj.getEmail());
-		entity.setPhone(obj.getPhone());
+	private void updateData(User entity, UserRequest obj) {
+		entity.setName(obj.name());
+		entity.setEmail(obj.email());
+		entity.setPhone(obj.phone());
 	}
 }	

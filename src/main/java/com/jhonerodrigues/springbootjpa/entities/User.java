@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jhonerodrigues.springbootjpa.entities.request.UserRequest;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,6 +41,13 @@ public class User implements Serializable{
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
+	}
+	
+	public User(UserRequest request) {
+		this.name = request.name();
+		this.email = request.email();
+		this.phone = request.phone();
+		this.password = request.password();
 	}
 
 	public Long getId() {

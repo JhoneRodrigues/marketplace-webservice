@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.jhonerodrigues.springbootjpa.entities.User;
+import com.jhonerodrigues.springbootjpa.entities.dtos.UserDTO;
+import com.jhonerodrigues.springbootjpa.entities.request.UserRequest;
 import com.jhonerodrigues.springbootjpa.services.UserService;
 
 @RestController
@@ -26,22 +27,20 @@ public class UserResource {
 	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+	public ResponseEntity<List<UserDTO>> findAll(){
+		return ResponseEntity.ok().body(service.findAll());
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
+		return ResponseEntity.ok().body(service.findById(id));
 	}
 	
 	@PostMapping 
-	public ResponseEntity<User> insert (@RequestBody User obj){
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+	public ResponseEntity<UserDTO> insert (@RequestBody UserRequest obj){
+		var newUser = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.id()).toUri();
+		return ResponseEntity.created(uri).body(newUser);
 	}
 	
 	@DeleteMapping(value = "/{id}")
@@ -51,8 +50,7 @@ public class UserResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
-		obj = service.update(id, obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserRequest obj) {
+		return ResponseEntity.ok().body(service.update(id, obj));
 	}
 }
