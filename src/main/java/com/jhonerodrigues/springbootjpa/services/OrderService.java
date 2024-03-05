@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jhonerodrigues.springbootjpa.entities.Order;
+import com.jhonerodrigues.springbootjpa.entities.dtos.OrderDTO;
 import com.jhonerodrigues.springbootjpa.repositories.OrderRepository;
 import com.jhonerodrigues.springbootjpa.services.exceptions.ResourceNotFoundException;
 
@@ -15,13 +15,13 @@ public class OrderService {
 	@Autowired
 	private OrderRepository repository;
 	
-	public List<Order> findAll(){
-		return repository.findAll();
+	public List<OrderDTO> findAll(){
+		return repository.findAll().stream()
+				.map(x -> new OrderDTO(x)).toList();
 	}
 	
-	public Order findById (Long id) {
-		Order obj = repository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException(id));
-		return obj;
+	public OrderDTO findById (Long id) {
+		return new OrderDTO(repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(id)));
 	}
 }	

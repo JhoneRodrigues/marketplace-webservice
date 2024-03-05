@@ -40,7 +40,7 @@ public class Order implements Serializable {
 	private User client;
 
 	@OneToMany(mappedBy = "id.order")
-	private Set <OrderItem> items = new HashSet<>();
+	private Set <OrderItem> itens = new HashSet<>();
 	
 	@OneToOne (mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
@@ -98,12 +98,12 @@ public class Order implements Serializable {
 	}
 
 	public Set<OrderItem> getItens(){
-		return items;	
+		return itens;	
 	}
 
 	public Double getTotal () {
 		double sum = 0;
-		for (OrderItem x: items) {
+		for (OrderItem x: itens) {
 			sum += x.getSubTotal();
 		}
 		return sum;
