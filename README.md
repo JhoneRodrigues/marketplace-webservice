@@ -9,17 +9,7 @@
 ### 2 - Objetivo
 Após estudar o tópico de Spring e mapeamento de objetos relacionais com JPA, coloquei em prática todos os conceitos com este projeto. Gerei as classes de dominio seguindo o modelo, realizei a estruturação das camadas lógicas: Resource, service e repository, gerei o CRUD Create, Retrieve, Update e Delete e por fim fiz o tratamento de exceções.
 
-### 3 - Retorno das requisições em produção
-#### Vizualizar todos usúarios
-> ![image](https://user-images.githubusercontent.com/110574688/263355105-f1341b7c-36e6-412d-a6d8-9ae5eec4f6f8.png)
-
-#### Vizualizar os produtos por Id
-> ![image](https://user-images.githubusercontent.com/110574688/263355351-ab00a10a-5704-46cf-97a6-52e3a53a0e2a.png)
-
-#### Vizualizar todas categorias
-> ![image](https://user-images.githubusercontent.com/110574688/263355510-372bd98f-8978-4852-b4c3-6294d31b4d1c.png)
-
-### 4 - Json das ordens de pedido, a entidade que possui relacionamento com todas
+### 3 - Json das ordens de pedido, a entidade que possui relacionamento com todas as demais
 
 #### Conforme o modelo conceitual, um pedido (Order) inclui os produtos solicitados, seus subvalores e o valor total do pedido:
 ```bash
@@ -79,6 +69,26 @@ Após estudar o tópico de Spring e mapeamento de objetos relacionais com JPA, c
     "total": 1431.0
 }
 ```
+
+### 6 - Como executar utilizando o Docker
+#### I - Comandos
+Inicie a aplicação em sua máquina com o seguinte comando:
+```bash
+docker run -p 8080:8080 --name java-webservice jhonerodrigues/marketplace:0.0.2-SNAPSHOT 
+```
+Para parar a execução use CRTR + C
+#### II - Endpoints HTTP utilizáveis
+- Get todos os clientes: http://localhost:8080/users
+- Get cliente por Id: http://localhost:8080/users/1
+- Post novo cliente através do body: http://localhost:8080/users
+- Put atualizar cliente por id: http://localhost:8080/users/1
+- Get todas as categorias: http://localhost:8080/categories
+- Get categoria por Id: http://localhost:8080/categories/1
+- Get todos os produtos: http://localhost:8080/products
+- Get produto por Id: http://localhost:8080/products/1
+- Get todas as ordens de compra: http://localhost:8080/orders
+- Get ordem de compra por Id: http://localhost:8080/orders/1
+
 ### 5 - Tecnologias utilizadas
 <ul>
   <li>Java</li>
@@ -86,6 +96,7 @@ Após estudar o tópico de Spring e mapeamento de objetos relacionais com JPA, c
   <li>JPA / Hibernate</li>
   <li>Maven</li>
   <li>H2 Database</li>
+  <li>Docker</li>
 </ul>
 
 ## <b> Vamos nos conectar..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
