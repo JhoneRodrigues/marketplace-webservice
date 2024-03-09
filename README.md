@@ -70,7 +70,7 @@ Após estudar o tópico de Spring e mapeamento de objetos relacionais com JPA, c
 }
 ```
 
-### 6 - Como executar utilizando o Docker
+### 4 - Como executar utilizando o Docker
 #### I - Comandos
 Inicie a aplicação em sua máquina com o seguinte comando:
 ```bash
